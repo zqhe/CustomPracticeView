@@ -49,7 +49,7 @@ public class Rect1View extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawBitmap(mBitmapBuffer, 0, 0, mPaint);
-        canvas.drawPath(mPath,mPaint);
+        canvas.drawPath(mPath, mPaint);
     }
 
     @Override
@@ -64,11 +64,36 @@ public class Rect1View extends View {
                 break;
             case MotionEvent.ACTION_MOVE:
                 mPath.reset();
-                mPath.addRect(preX, preY, x, y, Path.Direction.CCW);
+                int left = preX;
+                int top = preY;
+                int rigth = x;
+                int bottom = y;
+                if (x > preX && y > preY) {
+                    left = preX;
+                    top = preY;
+                    rigth = x;
+                    bottom = y;
+                } else if (x > preX && y <= preY) {
+                    left = preX;
+                    top = y;
+                    rigth = x;
+                    bottom = preY;
+                } else if (x <= preX && y > preY) {
+                    left = x;
+                    top = preY;
+                    rigth = preX;
+                    bottom = y;
+                } else if (x <= preX && y <= preY) {
+                    left = x;
+                    top = y;
+                    rigth = preX;
+                    bottom = preY;
+                }
+                mPath.addRect(left, top, rigth, bottom, Path.Direction.CCW);
                 invalidate();
                 break;
             case MotionEvent.ACTION_UP:
-                mBitmapCanvas.drawPath(mPath,mPaint);
+                mBitmapCanvas.drawPath(mPath, mPaint);
                 invalidate();
                 break;
             default:
