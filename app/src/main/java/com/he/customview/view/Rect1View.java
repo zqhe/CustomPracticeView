@@ -68,6 +68,8 @@ public class Rect1View extends View {
                 invalidate();
                 break;
             case MotionEvent.ACTION_UP:
+                mBitmapCanvas.drawPath(mPath,mPaint);
+                invalidate();
                 break;
             default:
                 break;
