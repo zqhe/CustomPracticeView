@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.he.customview.view.BallMoveView
+        android:id="@+id/ballview"
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:visibility="gone"/>
+
+    <com.he.customview.view.RulerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>
